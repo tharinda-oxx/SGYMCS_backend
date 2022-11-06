@@ -92,7 +92,7 @@ def infer_image():
     file = request.files['file']
     filename= secure_filename(file.filename)
     file_path = f'Store/Bulk/{filename}'
-    skinimagefile.save(file_path)
+    file.save(file_path)
     # Read the image via file.stream
     try:
         if file != None:
