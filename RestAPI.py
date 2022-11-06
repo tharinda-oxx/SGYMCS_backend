@@ -8,10 +8,10 @@ from werkzeug.utils import secure_filename
 model = tf.keras.models.load_model('models/slimfatmodel1.h5')
 
 
-def prepare_image(file):
+def prepare_image(img):
     """this function use for image resize"""
-    file_path = f'Store/{file}'
-    img = Image.open(file_path)
+    #file_path = f'Store/{file}'
+    #img = Image.open(file_path)
     img = np.array(img)
     img = tf.image.resize(img, (256,256))
     img = np.expand_dims(img/255,0)
@@ -94,11 +94,12 @@ def infer_image():
     file_path = f'Store/{filename}'
     file.save(file_path)
     # Read the image via file.stream
+    img = Image.open(file_path)
     try:
-        if file != None:
-            print(type(file))
+        if img != None:
+            print(type(img))
             print("File found")
-            return prepare_image(file)
+            return prepare_image(img)
         else:
             print("File not found")
             return jsonify({'result': 'Failed'}), 404
