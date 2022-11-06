@@ -10,7 +10,7 @@ model = tf.keras.models.load_model('models/slimfatmodel1.h5')
 
 def prepare_image(file):
     """this function use for image resize"""
-    file_path = f'Store/Bulk/{file}'
+    file_path = f'Store/{file}'
     img = Image.open(file_path)
     img = np.array(img)
     img = tf.image.resize(img, (256,256))
@@ -91,7 +91,7 @@ def infer_image():
     """Catch the image file from a POST request"""
     file = request.files['file']
     filename= secure_filename(file.filename)
-    file_path = f'Store/Bulk/{filename}'
+    file_path = f'Store/{filename}'
     file.save(file_path)
     # Read the image via file.stream
     try:
