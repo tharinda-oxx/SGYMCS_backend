@@ -3,6 +3,7 @@ import tensorflow as tf
 from PIL import Image
 from flask import Flask, jsonify, request
 from waitress import serve
+from werkzeug.utils import secure_filename
 
 model = tf.keras.models.load_model('models/slimfatmodel1.h5')
 
@@ -10,7 +11,10 @@ model = tf.keras.models.load_model('models/slimfatmodel1.h5')
 def prepare_image(file):
     """this function use for image resize"""
     data =request.files['file']
-    img = Image.open(request.files['file'])
+    filename= secure_filename(skinimagefile.filename)
+    file_path = f'Store/Bulk/{filename}'
+    skinimagefile.save(file_path)
+    img = Image.open(file_path)
     img = np.array(img)
     img = tf.image.resize(img, (256,256))
     img = np.expand_dims(img/255,0)
