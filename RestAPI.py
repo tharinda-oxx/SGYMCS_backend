@@ -10,10 +10,7 @@ model = tf.keras.models.load_model('models/slimfatmodel1.h5')
 
 def prepare_image(file):
     """this function use for image resize"""
-    data =request.files['file']
-    filename= secure_filename(skinimagefile.filename)
-    file_path = f'Store/Bulk/{filename}'
-    skinimagefile.save(file_path)
+    file_path = f'Store/Bulk/{file}'
     img = Image.open(file_path)
     img = np.array(img)
     img = tf.image.resize(img, (256,256))
@@ -93,6 +90,9 @@ app = Flask(__name__)
 def infer_image():
     """Catch the image file from a POST request"""
     file = request.files['file']
+    filename= secure_filename(file.filename)
+    file_path = f'Store/Bulk/{filename}'
+    skinimagefile.save(file_path)
     # Read the image via file.stream
     try:
         if file != None:
