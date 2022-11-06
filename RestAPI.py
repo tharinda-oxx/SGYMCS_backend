@@ -2,6 +2,7 @@ import numpy as np
 import tensorflow as tf
 from PIL import Image
 from flask import Flask, jsonify, request
+from waitress import serve
 
 model = tf.keras.models.load_model('models/slimfatmodel1.h5')
 
@@ -107,4 +108,5 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0',port=80)
+    #app.run(debug=False, host='0.0.0.0',port=80)
+    serve(app, host='0.0.0.0',port=80)
