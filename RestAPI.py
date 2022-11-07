@@ -23,7 +23,7 @@ def predict_result(img):
     if model.predict(img)[0][0] > 0.5:
         return jsonify(
         {
-   "result":"pass",
+   "message":"pass",
    "predict":"fat",
    "shedule_before_workout":[
       "Cardio session",
@@ -92,7 +92,7 @@ def predict_result(img):
     else:
         return jsonify(
             {
-   "result":"pass",
+   "message":"pass",
    "predict":"slim",
    "shedule_before_workout":[
       "Cardio_session",
@@ -195,10 +195,10 @@ def infer_image():
             return prepare_image(img)
         else:
             print("File not found")
-            return jsonify({'result': 'Failed'}), 404
+            return jsonify({'message': 'Failed'}), 404
     except Exception as e:
         print(e)
-        return jsonify({'result': 'Failed'}),   404
+        return jsonify({'message': 'Failed'}),   404
 
 @app.route('/', methods=['GET'])
 def index():
