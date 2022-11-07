@@ -63,7 +63,7 @@ def predict_result(img):
       "Hamer curl  10*3",
       "Wrist curl 12*3"
    ],
-   "abdominal_whole_3_days":[
+   "abdominal":[
       "Lain leg raises  10*3",
       "Alternative leg raises  10*3",
       "Situps 15*3",
@@ -74,7 +74,7 @@ def predict_result(img):
    ],
    "meal_plan":{
       "breakfast_8am":"Oats 100g",
-      "12 noon":"watermelon juice",
+      "12_noon":"watermelon juice",
       "lunch_1am":[
          "Red rice 100g",
          "Beans 100g",
