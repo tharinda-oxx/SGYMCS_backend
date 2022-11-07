@@ -200,7 +200,7 @@ def infer_image():
         except Exception as e:
             print(e)
             return jsonify({'message': 'Failed'}),   404
-     expect:
+     except:
         return jsonify({'message': 'Failed'}),   404
 
 @app.route('/', methods=['GET'])
