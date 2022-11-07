@@ -199,9 +199,9 @@ def infer_image():
                 return jsonify({'message': 'failed'}), 404
         except Exception as e:
             print(e)
-            return jsonify({'message': 'failed','error':e}),   404
+            return jsonify({'message': 'failed','error':f'{e}'}),   404
     except Exception as e:
-        return jsonify({'message': 'failed','error':e}),   404
+        return jsonify({'message': 'failed','error':f'{e}'}),   404
 
 @app.route('/', methods=['GET'])
 def index():
