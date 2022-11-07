@@ -182,22 +182,25 @@ app = Flask(__name__)
 @app.route('/predict', methods=['GET', 'POST'])
 def infer_image():
     """Catch the image file from a POST request"""
-    file = request.files['file']
-    filename= secure_filename(file.filename)
-    file_path = f'Store/{filename}'
-    file.save(file_path)
-    # Read the image via file.stream
-    img = Image.open(file_path)
     try:
-        if img != None:
-            print(type(img))
-            print("File found")
-            return prepare_image(img)
-        else:
-            print("File not found")
-            return jsonify({'message': 'Failed'}), 404
-    except Exception as e:
-        print(e)
+        file = request.files['file']
+        filename= secure_filename(file.filename)
+        file_path = f'Store/{filename}'
+        file.save(file_path)
+    # Read the image via file.stream
+        img = Image.open(file_path)
+        try:
+            if img != None:
+                print(type(img))
+                print("File found")
+                return prepare_image(img)
+            else:
+                print("File not found")
+                return jsonify({'message': 'Failed'}), 404
+        except Exception as e:
+            print(e)
+            return jsonify({'message': 'Failed'}),   404
+     expect:
         return jsonify({'message': 'Failed'}),   404
 
 @app.route('/', methods=['GET'])
