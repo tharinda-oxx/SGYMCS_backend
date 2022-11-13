@@ -24,8 +24,8 @@ def predict_result(img):
         return jsonify(
         {
     "message":"pass",
-    "predict":"fat",
-    "shedule_before_workout":[
+    "predict":"Endomorph (Fat)",
+    "schedule_before_workout":[
        "Cardio session",
        "Treadmill 20 minutes",
        "Cycling 10 minutes",
@@ -85,8 +85,8 @@ def predict_result(img):
         return jsonify(
             {
     "message":"pass",
-    "predict":"slim",
-    "shedule_before_workout":[
+    "predict":"Mesomorph (Normal)",
+    "schedule_before_workout":[
       "Cardio_session",
       "Cross trainer 15 mins",
       "Warmup",
